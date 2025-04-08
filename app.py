@@ -1,9 +1,8 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 import os
 
 app = Flask(__name__)
 
-# 신청 유형별 파일 경로
 FILES = {
     'male': 'male.txt',
     'female': 'female.txt',
@@ -27,7 +26,7 @@ def apply():
                 if name in f.read().splitlines():
                     return f"<h2>{name}님은 이미 신청하셨습니다!</h2>"
 
-    # 이름 저장
+    # 신청 저장
     with open(file_path, 'a', encoding='utf-8') as f:
         f.write(name + '\n')
 
@@ -45,5 +44,23 @@ def status():
         status_data[key] = names
     return render_template('status.html', status_data=status_data)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# ✅ 관리자 페이지
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    status_data = {}
+    for key, path in FILES.items():
+        try:
+            with open(path, 'r', encoding='utf-8') as f:
+                names = f.read().splitlines()
+        except FileNotFoundError:
+            names = []
+        status_data[key] = names
+
+    if request.method == 'POST':
+        # 모든 파일 삭제
+        for path in FILES.values():
+            if os.path.exists(path):
+                os.remove(path)
+        return redirect(url_for('admin'))
+
+    return render_template('admin.html', status_data=status_data)
