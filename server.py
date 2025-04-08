@@ -40,4 +40,5 @@ def apply():
     return f"<h2>{name}님, {song_type} 곡 신청 완료!</h2>"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)
+
