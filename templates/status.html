@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>신청 현황 | 클럽퍼핏</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f6fc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 30px 40px;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(106, 13, 173, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #6a0dad;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #6a0dad;
+      margin-top: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 30px 0;
+    }
+
+    li {
+      background-color: #f2e9fb;
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      color: #6a0dad;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 신청 현황</h1>
+
+    {% for category, names in data.items() %}
+      <h2>{{ category }} 신청자</h2>
+      {% if names %}
+        <ul>
+          {% for name in names %}
+            <li>{{ name }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>신청자가 없습니다.</p>
+      {% endif %}
+    {% endfor %}
+
+    <a href="/">← 신청 페이지로 돌아가기</a>
+  </div>
+
+  <footer>
+    ⓒ 2025 클럽퍼핏 Club Puppet
+  </footer>
+</body>
+</html>

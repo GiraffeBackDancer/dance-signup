@@ -1,20 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="utf-8">
-    <title>무대 곡 신청</title>
+  <meta charset="UTF-8">
+  <title>클럽퍼핏 체전 신청</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f6fc;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 30px 40px;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(106, 13, 173, 0.15);
+    }
+    h1 {
+      text-align: center;
+      color: #6a0dad;
+      margin-bottom: 30px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, select, button {
+      margin-bottom: 15px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #6a0dad;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #4e0e96;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-    <h2>댄스 무대 선착순 신청</h2>
-    <form action="/apply" method="post">
-        이름: <input type="text" name="name" required><br><br>
-        곡 선택:
-        <select name="song" required>
-            <option value="male">남자곡</option>
-            <option value="female">여자곡</option>
-            <option value="group">단체곡</option>
-        </select><br><br>
-        <input type="submit" value="신청하기">
+  <div class="container">
+    <h1>🟣 클럽퍼핏 체전 신청</h1>
+    <form method="POST" action="/apply">
+      <input type="text" name="name" placeholder="이름을 입력하세요" required>
+      <select name="song" required>
+        <option value="">-- 곡을 선택하세요 --</option>
+        <option value="male">남성 솔로</option>
+        <option value="female">여성 솔로</option>
+        <option value="group">그룹</option>
+      </select>
+      <button type="submit">신청하기</button>
     </form>
+  </div>
+
+  <footer>
+    ⓒ 2025 클럽퍼핏 Club Puppet
+  </footer>
 </body>
 </html>
