@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+</head>
+<body>
+    <h2>신청 현황</h2>
+    {% for category, names in status_data.items() %}
+        <h3>{{ category }} 신청자</h3>
+        <ul>
+            {% for name in names %}
+                <li>{{ name }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <form method="POST">
+        <button type="submit">모든 신청 초기화</button>
+    </form>
+</body>
+</html>
