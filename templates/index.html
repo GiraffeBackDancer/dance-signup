@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>무대 곡 신청</title>
+</head>
+<body>
+    <h2>댄스 무대 선착순 신청</h2>
+    <form action="/apply" method="post">
+        이름: <input type="text" name="name" required><br><br>
+        곡 선택:
+        <select name="song" required>
+            <option value="male">남자곡</option>
+            <option value="female">여자곡</option>
+            <option value="group">단체곡</option>
+        </select><br><br>
+        <input type="submit" value="신청하기">
+    </form>
+</body>
+</html>
