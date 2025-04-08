@@ -64,3 +64,7 @@ def admin():
         return redirect(url_for('admin'))
 
     return render_template('admin.html', status_data=status_data)
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
