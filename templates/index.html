@@ -6,32 +6,37 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-image: url("/static/logo.jpg"); /* 🔥 수정됨 */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       background-color: #f9f6fc;
       color: #333;
       margin: 0;
       padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+
     .container {
+      width: 100%;
       max-width: 500px;
-      margin: 100px auto;
       padding: 30px 40px;
       background-color: white;
       border-radius: 16px;
       box-shadow: 0 4px 12px rgba(106, 13, 173, 0.15);
     }
+
     h1 {
       text-align: center;
       color: #6a0dad;
       margin-bottom: 30px;
     }
+
     form {
       display: flex;
       flex-direction: column;
     }
+
     input, select, button {
       margin-bottom: 15px;
       padding: 12px;
@@ -39,6 +44,7 @@
       border-radius: 8px;
       border: 1px solid #ccc;
     }
+
     button {
       background-color: #6a0dad;
       color: white;
@@ -46,9 +52,11 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
+
     button:hover {
       background-color: #4e0e96;
     }
+
     footer {
       text-align: center;
       margin-top: 40px;
