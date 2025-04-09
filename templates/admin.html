@@ -1,22 +1,54 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>관리자 페이지</title>
+  <meta charset="UTF-8">
+  <title>관리자 페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f5;
+      background-image: url(logo.jpg);
+    }
+    h1 {
+      color: #6a0dad;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #c62828;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <h2>신청 현황</h2>
-    {% for category, names in status_data.items() %}
-        <h3>{{ category }} 신청자</h3>
-        <ul>
-            {% for name in names %}
-                <li>{{ name }}</li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+  <h1>🛠️ 관리자 페이지</h1>
 
-    <form method="POST">
-        <button type="submit">모든 신청 초기화</button>
-    </form>
+  {% for key, names in status_data.items() %}
+  <div class="section">
+    <h3>{{ key | capitalize }} 신청자 ({{ names|length }}명)</h3>
+    <ul>
+      {% for name in names %}
+      <li>{{ name }}</li>
+      {% endfor %}
+      {% if names|length == 0 %}
+      <li>신청자 없음</li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endfor %}
+
+  <form method="POST" onsubmit="return confirm('정말 모든 데이터를 삭제하시겠습니까?');">
+    <button type="submit">🚨 모든 신청 데이터 삭제</button>
+  </form>
 </body>
 </html>
